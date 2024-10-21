@@ -191,16 +191,6 @@ class _TwoLaneRoadState extends State<TwoLaneRoad> with TickerProviderStateMixin
             ),
           ),
 
-          // Moving object in Lane 1 (Bottom to top animation)
-          Positioned(
-            left: 70, // Same left margin as Lane 1
-            top: 90 + lane1Animation!.value * 650, // Move the object vertically
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: Colors.yellowAccent,
-            ),
-          ),
-
           // Moving object in Lane 2 (Left to right animation)
           Positioned(
             left: 20 + lane2Animation!.value * (MediaQuery.of(context).size.width - 100), // Move horizontally

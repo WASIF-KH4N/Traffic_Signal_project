@@ -125,12 +125,8 @@ class _TwoLaneRoadState extends State<TwoLaneRoad> with TickerProviderStateMixin
     lane2Controller!.repeat(reverse: false);
   }
 
-  @override
-  void dispose() {
-    lane1Controller?.dispose();
-    lane2Controller?.dispose();
-    super.dispose();
-  }
+  
+  
 
   // Function to determine the color of the signal
   Color signalColor(bool isOpen) {

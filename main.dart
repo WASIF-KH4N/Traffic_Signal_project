@@ -311,7 +311,127 @@ class _TwoLaneRoadState extends State<TwoLaneRoad> with TickerProviderStateMixin
             child: Row(
               children: [
                 Container(
+                            backgroundColor: Colors.yellowAccent,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}*/
+
+/*import 'package:flutter/material.dart';
+//import 'counter.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Center(child: Text("Two Lane Road with Signals")),
+          backgroundColor: Colors.cyanAccent,
+        ),
+        body: TwoLaneRoad(),
+      ),
+    );
+  }
+}
+
+class TwoLaneRoad extends StatefulWidget {
+  @override
+  _TwoLaneRoadState createState() => _TwoLaneRoadState();
+}
+
+class _TwoLaneRoadState extends State<TwoLaneRoad> with TickerProviderStateMixin {
+  AnimationController? lane1Controller;
+  AnimationController? lane2Controller;
+  Animation<double>? lane1Animation;
+  Animation<double>? lane2Animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Lane 1: Animation from bottom to top
+    lane1Controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 4),
+    );
+    lane1Animation = Tween<double>(begin: 1.0, end: 0.0).animate(lane1Controller!)
+      ..addListener(() {
+        setState(() {});
+      });
+    lane1Controller!.repeat(reverse: false);
+
+    // Lane 2: Animation from left to right
+    lane2Controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 4),
+    );
+    lane2Animation = Tween<double>(begin: 0.0, end: 1.0).animate(lane2Controller!)
+      ..addListener(() {
+        setState(() {});
+      });
+    lane2Controller!.repeat(reverse: false);
+  }
+
+  @override
+  void dispose() {
+    lane1Controller?.dispose();
+    lane2Controller?.dispose();
+    super.dispose();
+  }
+
+  // Function to determine the color of the signal
+  Color signalColor(bool isOpen) {
+    return isOpen ? Colors.green : Colors.red;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        children: [
+          // Lane 1 (Vertical lane with left margin)
+          Positioned(
+            left: 50, // Left margin for Lane 1
+            top: 100, // Adjust top position to your needs
+            child: Column(
+              children: [
+                Container(
+                  width: 60,
+                  height: 650,
+                  color: Colors.black, // Vertical road color
+                  child: Center(
+                    child: RotatedBox(
+                      quarterTurns: 3,
+                      child: Text("Lane 1", style: TextStyle(color: Colors.white)),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundColor: signalColor(true), // Green if signal is open
+                ),
+              ],
+            ),
+          ),
+
+          // Lane 2 (Horizontal lane at the top)
+          Positioned(
+            top: 150, // Align this with the top of the vertical lane
+            child: Row(
+              children: [
+                Container(
                   width: MediaQuery.of(context).size.width -53, // Full width minus margin
+                      width: MediaQuery.of(context).size.width -53, // Full width minus margin
                   height: 70,
                   color: Colors.black, // Horizontal road color
                   child: Center(
@@ -328,29 +448,6 @@ class _TwoLaneRoadState extends State<TwoLaneRoad> with TickerProviderStateMixin
           ),
 
           // Moving object in Lane 1 (Bottom to top animation)
-          Positioned(
-            left: 70, // Same left margin as Lane 1
-            top: 90 + lane1Animation!.value * 650, // Move the object vertically
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: Colors.yellowAccent,
-            ),
-          ),
-
-          // Moving object in Lane 2 (Left to right animation)
-          Positioned(
-            left: 20 + lane2Animation!.value * (MediaQuery.of(context).size.width - 100), // Move horizontally
-            top: 175, // Same top margin as Lane 2
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: Colors.yellowAccent,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}*/
 
 
 
